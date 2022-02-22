@@ -1,0 +1,19 @@
+name: Action Test
+on: 
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'  
+jobs: 
+  Github-Actions:
+    printInputs:
+      runs-on: ubuntu-latest
+        steps:
+          run: echo "The name of the event is ${{github.event_name}}."
+          run: echo "The name of this repository is ${{github.repository}}."
+          uses: actions/checkout@v2
+          run: ls ${{github.workspace}}
